@@ -9050,7 +9050,7 @@
 
         data: {
             draggable: true,
-            threshold: 10
+            threshold: 40
         },
 
         created: function() {
@@ -9064,8 +9064,10 @@
 
                     var pos = getEventPos(e).x * (isRtl ? -1 : 1);
 
-                    this$1.prevPos = pos !== this$1.pos ? this$1.pos : this$1.prevPos;
-                    this$1.pos = pos;
+                    if(!isNaN(pos)) {
+                        this$1.prevPos = pos !== this$1.pos ? this$1.pos : this$1.prevPos;
+                        this$1.pos = pos;
+                    }
 
                     fn(e);
                 };

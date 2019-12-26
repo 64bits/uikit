@@ -8,7 +8,7 @@ export default {
 
     data: {
         draggable: true,
-        threshold: 10
+        threshold: 40
     },
 
     created() {
@@ -20,8 +20,10 @@ export default {
 
                 const pos = getEventPos(e).x * (isRtl ? -1 : 1);
 
-                this.prevPos = pos !== this.pos ? this.pos : this.prevPos;
-                this.pos = pos;
+                if(!isNaN(pos)) {
+                    this.prevPos = pos !== this.pos ? this.pos : this.prevPos;
+                    this.pos = pos;
+                }
 
                 fn(e);
             };
